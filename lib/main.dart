@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_final_proje/Login/login.dart';
+import 'package:mobil_final_proje/pages/login_page.dart';
 
-void main(){
-  runApp(MaterialApp(
-    home: new Login(),
-    debugShowCheckedModeBanner: false,
-    ),
-  );
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(primarySwatch: Colors.blue), home: LoginPage());
+  }
 }
