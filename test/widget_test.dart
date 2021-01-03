@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobil_final_proje/Login/login.dart';
+import 'file:///C:/Users/googl/AndroidStudioProjects/mobil_final_proje/lib/pages/yoneticilogin.dart';
 
 
 
