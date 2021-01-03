@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_final_proje/pages/yoneticilogin.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -87,37 +88,34 @@ class _State extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                 )),
                 Container(
-                  child: Row(
-                    children: <Widget>[
-                      FlatButton(
-                        textColor: Colors.blue,
-                        child: Text(
-                          "Yönetici Girişi",
-                          style: TextStyle(fontSize: 15),
+                    padding: EdgeInsets.fromLTRB(0, 150, 0, 0),
+                    child: Row(
+                      children: <Widget>[
+                        FlatButton(
+                          textColor: Colors.blue,
+                          child: Text(
+                            "Yönetici Girişi",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                //Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Login()));
+                          },
                         ),
-                        onPressed: () {
-                          //
-                        },
-                      )
-                    ],
-                  ),
+                        FlatButton(
+                          textColor: Colors.blue,
+                          child: Text(
+                            "Kurye Girişi",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          onPressed: () {},
+                        )
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    )
                 ),
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      FlatButton(
-                        textColor: Colors.blue,
-                        child: Text(
-                          "Kurye Girişi",
-                          style: TextStyle(fontSize: 15),
-                        ),
-                        onPressed: () {
-                          //
-                        },
-                      )
-                    ],
-                  ),
-                )
               ],
             )));
   }
