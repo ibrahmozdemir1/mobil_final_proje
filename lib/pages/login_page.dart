@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobil_final_proje/pages/yoneticilogin.dart';
+import 'package:mobil_final_proje/pages/kullanıcikayitekrani.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -7,8 +9,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _State extends State<LoginPage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  get passwordController => null;
+  get nameController => null;
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +83,10 @@ class _State extends State<LoginPage> {
                         style: TextStyle(fontSize: 20),
                       ),
                       onPressed: () {
-                        //signup screen
+                        Navigator.pushReplacement(
+                          //Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => KullaniciKayit()));
                       },
                     )
                   ],
@@ -120,3 +125,4 @@ class _State extends State<LoginPage> {
             )));
   }
 }
+
