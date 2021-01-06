@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobil_final_proje/pages/yoneticilogin.dart';
 import 'package:mobil_final_proje/pages/kullanıcikayitekrani.dart';
 
+import '../home.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,17 +11,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _State extends State<LoginPage> {
-  get passwordController => null;
-  get nameController => null;
-
+  String _email, _password;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('Marketim'),
         ),
-        body: Padding(
-            padding: EdgeInsets.all(10),
+        body: Form(
+            key: _formKey,
             child: ListView(
               children: <Widget>[
                 Container(
@@ -34,19 +35,22 @@ class _State extends State<LoginPage> {
                     )),
                 Container(
                   padding: EdgeInsets.all(10),
-                  child: TextField(
-                    controller: nameController,
+                  child: TextFormField(
+                    validator: (value) => value.isEmpty ? 'Lütfen email girişi yapınız' : null,
+                    onSaved: (value) => _email = value,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Kullanıcı Adı',
+                      labelText: 'E-mail',
                     ),
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  child: TextField(
+                  child: TextFormField(
                     obscureText: true,
-                    controller: passwordController,
+                    validator: (value) =>
+                    value.isEmpty ? 'Lütfen şifre girişi yapınız' : null,
+                    onSaved: (value) => _password = value,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Şifre',
@@ -67,10 +71,7 @@ class _State extends State<LoginPage> {
                       textColor: Colors.white,
                       color: Colors.blue,
                       child: Text('Giriş'),
-                      onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
-                      },
+                      onPressed: () => signIn(),
                     )),
                 Container(
                     child: Row(
@@ -123,6 +124,23 @@ class _State extends State<LoginPage> {
                 ),
               ],
             )));
+  }
+
+  Future<void> signIn() async {
+    final formState = _formKey.currentState;
+    if (formState.validate()) {
+      //todo login to firebase
+      formState.save();
+      try {
+        // Firebase ile iletişim noktası
+        UserCredential user = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home(user: user)));
+      } catch (e) {
+        print(e.toString());
+      }
+    }
   }
 }
 
