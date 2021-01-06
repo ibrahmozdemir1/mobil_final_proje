@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mobil_final_proje/home.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class KullaniciKayit extends StatefulWidget {
-  final String title = 'Registration';
   @override
   State<StatefulWidget> createState() =>
       KullaniciKayitState();
@@ -22,7 +22,7 @@ class KullaniciKayitState extends State<KullaniciKayit> {
     KullaniciKayit();
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Kullanıcı Kayıt Ekranı"),
       ),
       body: Form(
         key: _formKey,
