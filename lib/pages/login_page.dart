@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mobil_final_proje/pages/kurye_giris.dart';
 import 'package:mobil_final_proje/pages/yoneticilogin.dart';
 import 'package:mobil_final_proje/pages/kullanıcikayitekrani.dart';
 
@@ -36,7 +37,8 @@ class _State extends State<LoginPage> {
                 Container(
                   padding: EdgeInsets.all(10),
                   child: TextFormField(
-                    validator: (value) => value.isEmpty ? 'Lütfen email girişi yapınız' : null,
+                    validator: (value) =>
+                        value.isEmpty ? 'Lütfen email girişi yapınız' : null,
                     onSaved: (value) => _email = value,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -49,7 +51,7 @@ class _State extends State<LoginPage> {
                   child: TextFormField(
                     obscureText: true,
                     validator: (value) =>
-                    value.isEmpty ? 'Lütfen şifre girişi yapınız' : null,
+                        value.isEmpty ? 'Lütfen şifre girişi yapınız' : null,
                     onSaved: (value) => _password = value,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -85,9 +87,10 @@ class _State extends State<LoginPage> {
                       ),
                       onPressed: () {
                         Navigator.pushReplacement(
-                          //Navigator.push(
+                            //Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => KullaniciKayit()));
+                            MaterialPageRoute(
+                                builder: (context) => KullaniciKayit()));
                       },
                     )
                   ],
@@ -107,7 +110,8 @@ class _State extends State<LoginPage> {
                             Navigator.pushReplacement(
                                 //Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Login()));
+                                MaterialPageRoute(
+                                    builder: (context) => Login()));
                           },
                         ),
                         FlatButton(
@@ -116,12 +120,17 @@ class _State extends State<LoginPage> {
                             "Kurye Girişi",
                             style: TextStyle(fontSize: 15),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                //Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => KuryeGiris()));
+                          },
                         )
                       ],
                       mainAxisAlignment: MainAxisAlignment.center,
-                    )
-                ),
+                    )),
               ],
             )));
   }
@@ -143,4 +152,3 @@ class _State extends State<LoginPage> {
     }
   }
 }
-
