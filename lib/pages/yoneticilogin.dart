@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mobil_final_proje/pages/yoneticiekrani.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -6,13 +8,15 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String _email, _password;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.blue,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+        color: Colors.grey,
+        child: Form(
+          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -26,13 +30,13 @@ class _LoginState extends State<Login> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         TextFormField(
+                          validator: (value) => value.isEmpty ? 'Lütfen email girişi yapınız' : null,
+                          onSaved: (value) => _email = value,
                           style: TextStyle(color: Color(0xFF000000)),
                           cursorColor: Color(0xFF9b9b9b),
-                          keyboardType: TextInputType.text,
-                          obscureText: true,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
-                              Icons.email,
+                              Icons.account_box,
                               color: Colors.grey,
                             ),
                             hintText: "e-posta",
@@ -40,18 +44,19 @@ class _LoginState extends State<Login> {
                               color: Color(0xFF9b9b9b),
                               fontSize: 15,
                               fontWeight: FontWeight.normal,
-
                             ),
                           ),
                         ),
                         TextFormField(
+                          validator: (value) =>
+                          value.isEmpty ? 'Lütfen şifre girişi yapınız' : null,
+                          onSaved: (value) => _password = value,
                           style: TextStyle(color: Color(0xFF000000)),
                           cursorColor: Color(0xFF9b9b9b),
-                          keyboardType: TextInputType.text,
                           obscureText: true,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
-                              Icons.email,
+                              Icons.account_box,
                               color: Colors.grey,
                             ),
                             hintText: "Şifre",
@@ -63,28 +68,12 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
-                        Padding(padding: const EdgeInsets.all(10),child:
-                        FlatButton(
-                          onPressed: (){},
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: 8,
-                              bottom: 8,
-                              left: 10,
-                              right: 10,
-                            ),
-                            child: Text(
-                              "Giriş",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                decoration: TextDecoration.none,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ),
-                          color: Colors.blue[400],
-                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10)),
+                        Padding(padding: const EdgeInsets.all(10), child:
+                        RaisedButton(
+                          onPressed: () => signIn(),
+                          textColor: Colors.white,
+                          color: Colors.blue,
+                          child: Text('Giriş'),
                         ),
                         ),
                       ],
@@ -96,6 +85,22 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+  Future<void> signIn() async {
+    final formState = _formKey.currentState;
+    if (formState.validate()) {
+      //todo login to firebase
+      formState.save();
+      try {
+        // Firebase ile iletişim noktası
+        UserCredential user = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => yonetici()));
+      } catch (e) {
+        print(e.toString());
+      }
+    }
   }
 }
 
