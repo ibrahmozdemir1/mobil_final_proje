@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+/*import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobil_final_proje/home.dart';
 
@@ -101,4 +101,4 @@ class KullaniciKayitState extends State<KullaniciKayit> {
     _passwordController.dispose();
     super.dispose();
   }
-}
+}*/
