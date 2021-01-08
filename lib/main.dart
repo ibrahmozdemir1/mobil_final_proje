@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobil_final_proje/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:mobil_final_proje/yoneticiekranıbutonları/urunEkle.dart';
 
 
 void main() async {
@@ -8,7 +9,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp( MaterialApp(
     theme: ThemeData(primarySwatch: Colors.blue),
-    home: LoginPage(),
+    home: urunEkle(),
     debugShowCheckedModeBanner: false,
    ),
   );
