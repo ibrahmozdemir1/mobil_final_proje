@@ -23,21 +23,17 @@ class _yoneticiState extends State<yonetici> {
                     padding: EdgeInsets.all(10),
                     child: RaisedButton(
                         padding: EdgeInsets.fromLTRB(85, 10, 85, 10),
-                        onPressed: (){
-
-                        },
+                        onPressed: () {},
                         child: Text("Ürün Ekle"),
                         textColor: Colors.blue,
-                        color: Colors.white
-                    ),
+                        color: Colors.white),
                   ),
                   Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(20),
                     child: RaisedButton(
                       padding: EdgeInsets.fromLTRB(55, 10, 55, 10),
-                      onPressed: (){
-                      },
+                      onPressed: () {},
                       child: Text("Kuryeleri Görüntüle"),
                       textColor: Colors.blue,
                       color: Colors.white,
@@ -48,18 +44,14 @@ class _yoneticiState extends State<yonetici> {
                     padding: EdgeInsets.all(20),
                     child: RaisedButton(
                       padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
-                      onPressed: (){
-
-                      },
+                      onPressed: () {},
                       child: Text("Siparişleri Görüntüle"),
                       textColor: Colors.blue,
                       color: Colors.white,
                     ),
                   ),
-                ]
-            ),
+                ]),
           ),
-        )
-    );
+        ));
   }
 }

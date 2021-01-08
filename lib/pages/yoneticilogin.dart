@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobil_final_proje/pages/yoneticiekrani.dart';
 
@@ -104,3 +104,4 @@ class _LoginState extends State<Login> {
   }
 }
 
+*/
