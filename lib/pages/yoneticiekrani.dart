@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_final_proje/yoneticiekran%C4%B1butonlar%C4%B1/urunEkle.dart';
 
-class yonetici extends StatefulWidget {
+class YoneticiEkran extends StatefulWidget {
   @override
-  _yoneticiState createState() => _yoneticiState();
+  _YoneticiEkranState createState() => _YoneticiEkranState();
 }
 
-class _yoneticiState extends State<yonetici> {
+class _YoneticiEkranState extends State<YoneticiEkran> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,7 @@ class _yoneticiState extends State<yonetici> {
                     padding: EdgeInsets.all(10),
                     child: RaisedButton(
                         padding: EdgeInsets.fromLTRB(85, 10, 85, 10),
-                        onPressed: () {},
+                        onPressed: () => UrunEkle(),
                         child: Text("Ürün Ekle"),
                         textColor: Colors.blue,
                         color: Colors.white),

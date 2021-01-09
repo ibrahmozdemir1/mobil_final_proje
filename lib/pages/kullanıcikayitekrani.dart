@@ -1,24 +1,19 @@
-/*import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobil_final_proje/home.dart';
-
-final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class KullaniciKayit extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() =>
-      KullaniciKayitState();
+  State<StatefulWidget> createState() => KullaniciKayitState();
 }
+
 class KullaniciKayitState extends State<KullaniciKayit> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _success;
   String _userEmail;
-
   @override
   Widget build(BuildContext context) {
-
     KullaniciKayit();
     return Scaffold(
       appBar: AppBar(
@@ -32,8 +27,8 @@ class KullaniciKayitState extends State<KullaniciKayit> {
             TextFormField(
               controller: _emailController,
               decoration: const InputDecoration(labelText: 'Email'),
-              validator: (String value){
-                if(value.isEmpty){
+              validator: (String value) {
+                if (value.isEmpty) {
                   return 'Lütfen geçerli bir e-mail giriniz.';
                 }
                 return null;
@@ -42,19 +37,19 @@ class KullaniciKayitState extends State<KullaniciKayit> {
             TextFormField(
               controller: _passwordController,
               decoration: const InputDecoration(labelText: 'Şifre'),
-              validator: (String value){
-                if(value.isEmpty){
+              validator: (String value) {
+                if (value.isEmpty) {
                   return 'Lütfen bir şifre giriniz.';
                 }
                 return null;
               },
             ),
             Container(
-              padding: const EdgeInsets.symmetric(vertical:16.0),
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
               alignment: Alignment.center,
               child: RaisedButton(
                 onPressed: () async {
-                  if(_formKey.currentState.validate()){
+                  if (_formKey.currentState.validate()) {
                     _register();
                   }
                 },
@@ -63,10 +58,11 @@ class KullaniciKayitState extends State<KullaniciKayit> {
             ),
             Container(
               alignment: Alignment.center,
-              child: Text(_success == null ? ''
+              child: Text(_success == null
+                  ? ''
                   : (_success
-                  ? 'Kayıt Başarılı' + _userEmail
-                  : 'Kayıt Başarısız')),
+                      ? 'Kayıt Başarılı' + _userEmail
+                      : 'Kayıt Başarısız')),
             ),
           ],
         ),
@@ -75,24 +71,20 @@ class KullaniciKayitState extends State<KullaniciKayit> {
   }
 
   Future<void> _register() async {
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text,
-          password: _passwordController.text,
-      );
-    } on FirebaseAuthException catch (e) {
-      if (e != null) {
-        setState(() {
-          _success = true;
-          _userEmail = e.email;
-        });
-      } else{
-        setState(() {
-          _success = true;
-        });
-      }
-    } catch (e) {
-      print(e);
+    UserCredential userCredential =
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    if (userCredential != null) {
+      setState(() {
+        _success = true;
+        _userEmail = _emailController.text;
+      });
+    } else {
+      setState(() {
+        _success = true;
+      });
     }
   }
 
@@ -101,4 +93,4 @@ class KullaniciKayitState extends State<KullaniciKayit> {
     _passwordController.dispose();
     super.dispose();
   }
-}*/
+}

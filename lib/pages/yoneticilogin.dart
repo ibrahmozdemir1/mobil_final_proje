@@ -1,13 +1,13 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobil_final_proje/pages/yoneticiekrani.dart';
 
-class Login extends StatefulWidget {
+class YoneticiGiris extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _YoneticiGirisState createState() => _YoneticiGirisState();
 }
 
-class _LoginState extends State<Login> {
+class _YoneticiGirisState extends State<YoneticiGiris> {
   String _email, _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
@@ -23,14 +23,18 @@ class _LoginState extends State<Login> {
               Card(
                 elevation: 4.0,
                 color: Colors.white,
-                margin: EdgeInsets.only(left: 20,right: 20),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                child: Padding(padding: const EdgeInsets.all(10),
+                margin: EdgeInsets.only(left: 20, right: 20),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         TextFormField(
-                          validator: (value) => value.isEmpty ? 'Lütfen email girişi yapınız' : null,
+                          validator: (value) => value.isEmpty
+                              ? 'Lütfen email girişi yapınız'
+                              : null,
                           onSaved: (value) => _email = value,
                           style: TextStyle(color: Color(0xFF000000)),
                           cursorColor: Color(0xFF9b9b9b),
@@ -48,8 +52,9 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         TextFormField(
-                          validator: (value) =>
-                          value.isEmpty ? 'Lütfen şifre girişi yapınız' : null,
+                          validator: (value) => value.isEmpty
+                              ? 'Lütfen şifre girişi yapınız'
+                              : null,
                           onSaved: (value) => _password = value,
                           style: TextStyle(color: Color(0xFF000000)),
                           cursorColor: Color(0xFF9b9b9b),
@@ -64,21 +69,20 @@ class _LoginState extends State<Login> {
                               color: Color(0xFF9b9b9b),
                               fontSize: 15,
                               fontWeight: FontWeight.normal,
-
                             ),
                           ),
                         ),
-                        Padding(padding: const EdgeInsets.all(10), child:
-                        RaisedButton(
-                          onPressed: () => signIn(),
-                          textColor: Colors.white,
-                          color: Colors.blue,
-                          child: Text('Giriş'),
-                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: RaisedButton(
+                            onPressed: () => signIn(),
+                            textColor: Colors.white,
+                            color: Colors.blue,
+                            child: Text('Giriş'),
+                          ),
                         ),
                       ],
-                    )
-                ),
+                    )),
               )
             ],
           ),
@@ -86,6 +90,7 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+
   Future<void> signIn() async {
     final formState = _formKey.currentState;
     if (formState.validate()) {
@@ -96,12 +101,10 @@ class _LoginState extends State<Login> {
         UserCredential user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => yonetici()));
-      } catch (e) {
-        print(e.toString());
+            context, MaterialPageRoute(builder: (context) => YoneticiEkran()));
+      } catch (user) {
+        print(user.toString());
       }
     }
   }
 }
-
-*/
