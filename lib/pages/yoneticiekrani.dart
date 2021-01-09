@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_final_proje/yoneticiekran%C4%B1butonlar%C4%B1/urunEkle.dart';
+import '../yon_ekran_button/urunEkle.dart';
 
 class YoneticiEkran extends StatefulWidget {
   @override
@@ -25,7 +25,7 @@ class _YoneticiEkranState extends State<YoneticiEkran> {
                     child: RaisedButton(
                         padding: EdgeInsets.fromLTRB(85, 10, 85, 10),
                         onPressed: () => UrunEkle(),
-                        child: Text("Ürün Ekle"),
+                        child: Text("Ürün İşlemleri"),
                         textColor: Colors.blue,
                         color: Colors.white),
                   ),
@@ -35,7 +35,7 @@ class _YoneticiEkranState extends State<YoneticiEkran> {
                     child: RaisedButton(
                       padding: EdgeInsets.fromLTRB(55, 10, 55, 10),
                       onPressed: () {},
-                      child: Text("Kuryeleri Görüntüle"),
+                      child: Text("Kurye İşlemleri"),
                       textColor: Colors.blue,
                       color: Colors.white,
                     ),
