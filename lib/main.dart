@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mobil_final_proje/yoneticiekranıbutonları/urunEkle.dart';
+import 'package:mobil_final_proje/pages/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: UrunEkle(),
+      home: LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }

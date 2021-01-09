@@ -98,14 +98,15 @@ class UrunEkleState extends State<UrunEkle> {
                       ),
                     ),
                     RaisedButton(
-                        child: Text("Resim Yükle"), onPressed: getImage),
-                    Row(
-                      children: [
-                        RaisedButton(
-                          child: Text("Ürünü Ekle"),
-                          onPressed: urunEkle,
-                        ),
-                      ],
+                        color: Colors.blue,
+                        child: Text("Resim Yükle"),
+                        textColor: Colors.white,
+                        onPressed: getImage),
+                    RaisedButton(
+                      color: Colors.blue,
+                      child: Text("Ürünü Ekle"),
+                      textColor: Colors.white,
+                      onPressed: urunEkle,
                     ),
                   ],
                 ),
@@ -113,10 +114,6 @@ class UrunEkleState extends State<UrunEkle> {
             ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.image),
       ),
     );
   }

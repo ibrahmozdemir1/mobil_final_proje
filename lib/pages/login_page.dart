@@ -1,4 +1,4 @@
-/*import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobil_final_proje/pages/kurye_giris.dart';
 import 'package:mobil_final_proje/pages/yoneticilogin.dart';
@@ -111,7 +111,7 @@ class _State extends State<LoginPage> {
                                 //Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Login()));
+                                    builder: (context) => YoneticiGiris()));
                           },
                         ),
                         FlatButton(
@@ -152,4 +152,3 @@ class _State extends State<LoginPage> {
     }
   }
 }
-*/
