@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'package:mobil_final_proje/yon_ekran_button/urunGuncelle.dart';
+import 'package:mobil_final_proje/urun_islemleri/urunGuncelle.dart';
 
 class UrunEkle extends StatefulWidget {
   @override

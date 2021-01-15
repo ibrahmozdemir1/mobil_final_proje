@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import '../yon_ekran_button/urunEkle.dart';
 
 class UrunGuncelle extends StatefulWidget {
   @override
@@ -11,7 +10,7 @@ class UrunGuncelle extends StatefulWidget {
 }
 
 class _UrunGuncelleState extends State<UrunGuncelle> {
-  CollectionReference ref = FirebaseFirestore.instance.collection('Urunler');
+  CollectionReference ref = FirebaseFirestore.instance.collection('Kuryeler');
   TextEditingController urunAdi = TextEditingController();
   TextEditingController urunMiktar = TextEditingController();
   TextEditingController urunFiyat = TextEditingController();
@@ -29,6 +28,8 @@ class _UrunGuncelleState extends State<UrunGuncelle> {
       }
     });
   }
+
+  BuildContext context2() => context;
 
   final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
   Reference _storageReference;

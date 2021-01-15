@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mobil_final_proje/pages/kuye_ekrani.dart';
 import 'package:mobil_final_proje/pages/login_page.dart';
 import 'package:mobil_final_proje/yon_ekran_button/urunEkle.dart';
 import 'package:mobil_final_proje/yon_ekran_button/urunGuncelle.dart';
@@ -21,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: LoginPage(),
+      home: UrunEkle(),
       debugShowCheckedModeBanner: false,
     );
   }

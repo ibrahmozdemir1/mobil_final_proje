@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mobil_final_proje/pages/yoneticiekrani.dart';
+import 'package:mobil_final_proje/yonetici_login_pages/yoneticiekrani.dart';
 
 class YoneticiGiris extends StatefulWidget {
   @override

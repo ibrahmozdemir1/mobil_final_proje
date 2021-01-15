@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../yon_ekran_button/urunEkle.dart';
+import '../urun_islemleri/urunEkle.dart';
 
 class YoneticiEkran extends StatefulWidget {
   @override

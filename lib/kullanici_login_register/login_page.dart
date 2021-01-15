@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobil_final_proje/pages/kurye_giris.dart';
-import 'package:mobil_final_proje/pages/yoneticilogin.dart';
-import 'package:mobil_final_proje/pages/kullanıcikayitekrani.dart';
-
+import 'package:mobil_final_proje/kurye_login_pages/kurye_giris.dart';
+import 'package:mobil_final_proje/yonetici_login_pages/yoneticilogin.dart';
 import '../home.dart';
+import 'package:mobil_final_proje/kullanici_login_register/kullanicikayitekrani.dart';
 
 class LoginPage extends StatefulWidget {
   @override

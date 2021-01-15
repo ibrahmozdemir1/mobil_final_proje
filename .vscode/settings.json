@@ -1,0 +1,12 @@
+{
+    "liveshare.allowGuestDebugControl": true,
+    "liveshare.allowGuestTaskControl": true,
+    "liveshare.alwaysFollowHost": true,
+    "liveshare.showInStatusBar": "whileCollaborating",
+    "liveshare.shareExternalFiles": false,
+    "liveshare.showVerboseNotifications": false,
+    "liveshare.publishWorkspaceInfo": true,
+    "liveshare.languages.allowGuestCommandControl": true,
+    "liveshare.joinDebugSessionOption": "Manual",
+    "liveshare.autoShareTerminals": false
+}
