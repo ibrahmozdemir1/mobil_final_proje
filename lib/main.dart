@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'yonetici_login_pages/yoneticiekrani.dart';
-import 'kurye_islemleri/kurye_ekle.dart';
-import 'kurye_login_pages/kuye_ekrani.dart';
-import 'kullanici_ekrani/urunler_liste.dart';
+import 'package:mobil_final_proje/pages/login_page.dart';
+import 'package:mobil_final_proje/yon_ekran_button/urunEkle.dart';
+import 'package:mobil_final_proje/yon_ekran_button/urunGuncelle.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,10 +18,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    initializeDateFormatting('tr');
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: UrunListe(),
+      home: UrunEkle(),
       debugShowCheckedModeBanner: false,
     );
   }

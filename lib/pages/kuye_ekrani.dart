@@ -1,21 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key key, this.user}) : super(key: key);
+class KuryeEkrani extends StatefulWidget {
+  const KuryeEkrani({Key key, this.user}) : super(key: key);
   final UserCredential user;
 
   @override
-  _HomeState createState() => _HomeState();
+  _KuryeEkraniState createState() => _KuryeEkraniState();
 }
 
-class _HomeState extends State<Home> {
+class _KuryeEkraniState extends State<KuryeEkrani> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
         title: Text('Home ${widget.user.user.email}'),
       ),
     );
