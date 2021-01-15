@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobil_final_proje/kurye_login_pages/kuye_ekrani.dart';
+import 'package:geolocator/geolocator.dart';
 
 class KuryeGiris extends StatefulWidget {
   @override
@@ -10,6 +11,34 @@ class KuryeGiris extends StatefulWidget {
 class _KuryeGirisState extends State<KuryeGiris> {
   String _email, _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permantly denied, we cannot request permissions.');
+    }
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        return Future.error(
+            'Location permissions are denied (actual value: $permission).');
+      }
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +106,14 @@ class _KuryeGirisState extends State<KuryeGiris> {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: FlatButton(
-                            onPressed: () => signIn(),
+                            onPressed: () {
+                              Future<LocationPermission> permission =
+                                  Geolocator.checkPermission();
+                              if (permission !=
+                                  LocationPermission.deniedForever) {
+                                return permission;
+                              }
+                            },
                             child: Padding(
                               padding: EdgeInsets.only(
                                 top: 8,

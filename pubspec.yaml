@@ -38,6 +38,9 @@ dependencies:
   image_cropper: 1.0.2
   image_picker: ^0.6.7+21
   provider: ^3.1.0
+  intl: ^0.16.0
+  geolocator: ^6.1.13
+
 
 
 
@@ -57,7 +60,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+      - images/arkaplan.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:mobil_final_proje/kurye_islemleri/kurye_konum.dart';
 import 'dart:io';
 import '../kurye_islemleri/kurye_guncelle.dart';
 
@@ -68,85 +70,124 @@ class KuryeIslemleriState extends State<KuryeIslemleri> {
         title: Text("Kurye Ekleme Ekranına Hoşgeldiniz"),
         elevation: 0,
         actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.folder),
-              color: Colors.white,
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => KuryeGuncelle()));
-              })
+          PopupMenuButton<Widget>(
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<Widget>>[
+              PopupMenuItem<Widget>(
+                child: InkWell(
+                  child: Text('Düzenle'),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => KuryeGuncelle()));
+                  },
+                ),
+              ),
+              PopupMenuItem<Widget>(
+                child: InkWell(
+                  child: Text('Konum Bilgisi'),
+                  onTap: () {
+                    /*
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => GeolocatorWidget()));*/
+                  },
+                ),
+              ),
+            ],
+          )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          heightFactor: 1.6,
-          widthFactor: 10,
-          child: Container(
-            margin: EdgeInsets.all(10),
-            height: 350,
-            color: Colors.amber,
-            width: 340,
-            child: ListView(
-              children: <Widget>[
-                _image == null
-                    ? Text('No image selected.')
-                    : Image.file(_image),
-                TextFormField(
-                  controller: kuryeAdSoyadi,
-                  style: TextStyle(color: Colors.blue),
-                  cursorColor: Color(0xFF9b9b9b),
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                      hintText: "Kuryenin Adı ve Soyadı",
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/arkaplan.png'), fit: BoxFit.fill)),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _image == null
+                      ? Text('No image selected.')
+                      : SizedBox(
+                          child: Image.file(_image),
+                          height: 250,
+                          width: 400,
+                        ),
+                  TextField(
+                    controller: kuryeAdSoyadi,
+                    style: TextStyle(color: Colors.blue),
+                    cursorColor: Color(0xFF9b9b9b),
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.person),
+                        hintText: "Kuryenin Adı ve Soyadı",
+                        hintStyle: TextStyle(
+                          color: Color(0xFF9b9b9b),
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                        )),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextField(
+                    controller: kuryeTelNo,
+                    style: TextStyle(color: Colors.blue),
+                    cursorColor: Color(0xFF9b9b9b),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.mobile_friendly),
+                      hintText: "Kuryenin Telefon Numarası",
                       hintStyle: TextStyle(
                         color: Color(0xFF9b9b9b),
                         fontSize: 15,
                         fontWeight: FontWeight.normal,
-                      )),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                TextFormField(
-                  controller: kuryeTelNo,
-                  style: TextStyle(color: Colors.blue),
-                  cursorColor: Color(0xFF9b9b9b),
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.mobile_friendly),
-                    hintText: "Kuryenin Telefon Numarası",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF9b9b9b),
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
+                      ),
                     ),
                   ),
-                ),
-                FlatButton(
-                  color: Colors.black,
-                  textColor: Colors.white,
-                  child: Text("İşe Giriş Tarihini Seç"),
-                  onPressed: () async {
-                    secilenTarih = await tarihSec(context);
-                    if (secilenTarih != null) {
-                      secilenTarih1 = secilenTarih.toString();
-                      setState(() {});
-                    } else {
-                      print("Lütfen Bir Tarih Seçiniz");
-                    }
-                  },
-                ),
-                FlatButton(
-                    color: Colors.blue,
-                    child: Text("Kurye Fotoğrafı Yükle"),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  FlatButton(
+                    minWidth: 250,
+                    color: Colors.black,
                     textColor: Colors.white,
-                    onPressed: getImage),
-                FlatButton(
-                  color: Colors.green,
-                  child: Text("Kuryeyi Ekle"),
-                  textColor: Colors.white,
-                  onPressed: urunEkle,
-                ),
-              ],
+                    child: Text("İşe Giriş Tarihini Seç"),
+                    onPressed: () async {
+                      secilenTarih = await tarihSec(context);
+                      if (secilenTarih != null) {
+                        var format = DateFormat.yMd('tr');
+                        var tarih = format.format(secilenTarih);
+                        secilenTarih1 = tarih.toString();
+                        setState(() {});
+                      } else {
+                        print("Lütfen Bir Tarih Seçiniz");
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  FlatButton(
+                      minWidth: 250,
+                      color: Colors.blue,
+                      child: Text("Kurye Fotoğrafı Yükle"),
+                      textColor: Colors.white,
+                      onPressed: getImage),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  FlatButton(
+                    minWidth: 250,
+                    color: Colors.green,
+                    child: Text("Kuryeyi Ekle"),
+                    textColor: Colors.white,
+                    onPressed: urunEkle,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
