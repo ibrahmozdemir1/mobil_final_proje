@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobil_final_proje/kullanici_login_register/login_page.dart';
 
 class UrunListe extends StatefulWidget {
@@ -64,7 +62,8 @@ class _UrunListeState extends State<UrunListe> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('images/arkaplan.png'), fit: BoxFit.fill)),
+                image: AssetImage('assets/images/arkaplan.png'),
+                fit: BoxFit.fill)),
         child: StreamBuilder(
             stream: ref.snapshots(),
             builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
