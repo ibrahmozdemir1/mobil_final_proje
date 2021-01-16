@@ -13,8 +13,12 @@ class _YoneticiGirisState extends State<YoneticiGiris> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Lütfen Giriş Yapınız"),
+        backgroundColor: Colors.pink,
+      ),
       body: Container(
-        color: Colors.grey,
+        color: Colors.lightBlue,
         child: Form(
           key: _formKey,
           child: Column(
@@ -61,7 +65,7 @@ class _YoneticiGirisState extends State<YoneticiGiris> {
                           obscureText: true,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
-                              Icons.account_box,
+                              Icons.vpn_key,
                               color: Colors.grey,
                             ),
                             hintText: "Şifre",

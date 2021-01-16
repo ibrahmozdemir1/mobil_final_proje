@@ -10,7 +10,7 @@ class UrunGuncelle extends StatefulWidget {
 }
 
 class _UrunGuncelleState extends State<UrunGuncelle> {
-  CollectionReference ref = FirebaseFirestore.instance.collection('Kuryeler');
+  CollectionReference ref = FirebaseFirestore.instance.collection('Urunler');
   TextEditingController urunAdi = TextEditingController();
   TextEditingController urunMiktar = TextEditingController();
   TextEditingController urunFiyat = TextEditingController();
@@ -36,7 +36,7 @@ class _UrunGuncelleState extends State<UrunGuncelle> {
 
   Future<String> uploadFile(File yuklenecekDosya) async {
     _storageReference =
-        _firebaseStorage.ref().child('urunler').child('urunAdi');
+        _firebaseStorage.ref().child('urunler').child(urunAdi.text);
     var uploadTask = _storageReference.putFile(yuklenecekDosya);
 
     var url = await (await uploadTask).ref.getDownloadURL();
@@ -82,7 +82,7 @@ class _UrunGuncelleState extends State<UrunGuncelle> {
                               context: context,
                               builder: (context) => Dialog(
                                     child: Container(
-                                      color: Colors.white,
+                                      color: Colors.indigo,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: ListView(
