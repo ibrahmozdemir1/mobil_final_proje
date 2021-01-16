@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +47,8 @@ class UrunEkleState extends State<UrunEkle> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ürün Ekleme Ekranına Hoşgeldiniz"),
+        backgroundColor: Colors.pink,
+        title: Text("Ürün İşlemleri"),
         elevation: 0,
         actions: <Widget>[
           IconButton(
@@ -58,69 +61,107 @@ class UrunEkleState extends State<UrunEkle> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            child: Form(
-              child: Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    _image == null
-                        ? Text('No image selected.')
-                        : Image.file(_image),
-                    TextField(
-                      controller: urunAdi,
-                      style: TextStyle(color: Colors.blue),
-                      cursorColor: Color(0xFF9b9b9b),
-                      decoration: InputDecoration(
-                          hintText: "Ürünün Adını Giriniz",
-                          hintStyle: TextStyle(
-                            color: Color(0xFF9b9b9b),
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal,
-                          )),
-                    ),
-                    TextField(
-                      controller: urunFiyat,
-                      style: TextStyle(color: Colors.blue),
-                      cursorColor: Color(0xFF9b9b9b),
-                      decoration: InputDecoration(
-                        hintText: "Ürün Fiyatını Giriniz",
-                        hintStyle: TextStyle(
-                          color: Color(0xFF9b9b9b),
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
-                        ),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.lightBlue,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              _image == null ? Text('No image selected.') : Image.file(_image),
+              Container(
+                width: 350,
+                child: TextField(
+                  controller: urunAdi,
+                  style: TextStyle(color: Colors.blue),
+                  cursorColor: Color(0xFF9b9b9b),
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderSide: BorderSide(),
                       ),
-                    ),
-                    TextField(
-                      controller: urunMiktar,
-                      style: TextStyle(color: Colors.blue),
-                      cursorColor: Color(0xFF9b9b9b),
-                      decoration: InputDecoration(
-                        hintText: "Ürünün Miktarını Giriniz",
-                        hintStyle: TextStyle(
-                          color: Color(0xFF9b9b9b),
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ),
-                    FlatButton(
-                        color: Colors.blue,
-                        child: Text("Resim Yükle"),
-                        textColor: Colors.white,
-                        onPressed: getImage),
-                    FlatButton(
-                      color: Colors.blue,
-                      child: Text("Ürünü Ekle"),
-                      textColor: Colors.white,
-                      onPressed: urunEkle,
-                    ),
-                  ],
+                      hintText: "Ürünün Adını Giriniz",
+                      hintStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      )),
                 ),
               ),
-            ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 350,
+                child: TextField(
+                  cursorWidth: 10,
+                  controller: urunFiyat,
+                  style: TextStyle(color: Colors.blue),
+                  cursorColor: Color(0xFF9b9b9b),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      borderSide: BorderSide(),
+                    ),
+                    hintText: "Ürün Fiyatını Giriniz",
+                    hintStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 350,
+                child: TextField(
+                  controller: urunMiktar,
+                  style: TextStyle(color: Colors.blue),
+                  cursorColor: Color(0xFF9b9b9b),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      borderSide: BorderSide(),
+                    ),
+                    hintText: "Ürünün Miktarını Giriniz",
+                    hintStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: 210,
+                height: 40,
+                child: FlatButton(
+                    color: Colors.purple,
+                    child: Text("Resim Yükle"),
+                    textColor: Colors.white,
+                    onPressed: getImage),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: 210,
+                height: 40,
+                child: FlatButton(
+                  color: Colors.green,
+                  child: Text("Ürünü Ekle"),
+                  textColor: Colors.white,
+                  onPressed: urunEkle,
+                ),
+              ),
+            ],
           ),
         ),
       ),

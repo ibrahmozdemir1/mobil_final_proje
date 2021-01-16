@@ -18,120 +18,148 @@ class _State extends State<LoginPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Marketim'),
+          backgroundColor: Colors.pink,
         ),
-        body: Form(
-            key: _formKey,
-            child: ListView(
-              children: <Widget>[
-                Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      'Marketim',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30),
-                    )),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: TextFormField(
-                    validator: (value) =>
-                        value.isEmpty ? 'Lütfen email girişi yapınız' : null,
-                    onSaved: (value) => _email = value,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'E-mail',
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  child: TextFormField(
-                    obscureText: true,
-                    validator: (value) =>
-                        value.isEmpty ? 'Lütfen şifre girişi yapınız' : null,
-                    onSaved: (value) => _password = value,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Şifre',
-                    ),
-                  ),
-                ),
-                FlatButton(
-                  onPressed: () {
-                    //forgot password screen
-                  },
-                  textColor: Colors.blue,
-                  child: Text('Şifremi Unuttum'),
-                ),
-                Container(
-                    height: 50,
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: RaisedButton(
-                      textColor: Colors.white,
-                      color: Colors.blue,
-                      child: Text('Giriş'),
-                      onPressed: () => signIn(),
-                    )),
-                Container(
-                    child: Row(
-                  children: <Widget>[
-                    Text('Henüz kaydolmadınız mı?'),
-                    FlatButton(
-                      textColor: Colors.blue,
+        body: Container(
+          color: Colors.purple,
+          child: Form(
+              key: _formKey,
+              child: ListView(
+                children: <Widget>[
+                  Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.all(10),
                       child: Text(
-                        'Kaydol',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            //Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => KullaniciKayit()));
-                      },
-                    )
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
-                )),
-                Container(
-                    padding: EdgeInsets.fromLTRB(0, 150, 0, 0),
-                    child: Row(
-                      children: <Widget>[
-                        FlatButton(
-                          textColor: Colors.blue,
-                          child: Text(
-                            "Yönetici Girişi",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                                //Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => YoneticiGiris()));
-                          },
+                        'Marketim',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 30),
+                      )),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: TextFormField(
+                      validator: (value) =>
+                          value.isEmpty ? 'Lütfen email girişi yapınız' : null,
+                      onSaved: (value) => _email = value,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'E-mail',
+                        labelStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
                         ),
-                        FlatButton(
-                          textColor: Colors.blue,
-                          child: Text(
-                            "Kurye Girişi",
-                            style: TextStyle(fontSize: 15),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: TextFormField(
+                      obscureText: true,
+                      validator: (value) =>
+                          value.isEmpty ? 'Lütfen şifre girişi yapınız' : null,
+                      onSaved: (value) => _password = value,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Şifre',
+                        labelStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  FlatButton(
+                    onPressed: () {
+                      //forgot password screen
+                    },
+                    textColor: Colors.blue,
+                    child: Text('Şifremi Unuttum'),
+                  ),
+                  Container(
+                      height: 50,
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: RaisedButton(
+                        textColor: Colors.white,
+                        color: Colors.blue,
+                        child: Text('Giriş'),
+                        onPressed: () => signIn(),
+                      )),
+                  Container(
+                      child: Row(
+                    children: <Widget>[
+                      Text('Henüz kaydolmadınız mı?',
+                          style: TextStyle(color: Colors.black)),
+                      FlatButton(
+                        textColor: Colors.blue,
+                        child: Text(
+                          'Kaydol',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              //Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => KullaniciKayit()));
+                        },
+                      )
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.center,
+                  )),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 150, 0, 0),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            width: 130,
+                            height: 40,
+                            child: FlatButton(
+                              color: Colors.green,
+                              textColor: Colors.white,
+                              child: Text(
+                                "Yönetici Girişi",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    //Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => YoneticiGiris()));
+                              },
+                            ),
                           ),
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                                //Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => KuryeGiris()));
-                          },
-                        )
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.center,
-                    )),
-              ],
-            )));
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Container(
+                            width: 130,
+                            height: 40,
+                            child: FlatButton(
+                              color: Colors.green,
+                              textColor: Colors.white,
+                              child: Text(
+                                "Kurye Girişi",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    //Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => KuryeGiris()));
+                              },
+                            ),
+                          )
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      )),
+                ],
+              )),
+        ));
   }
 
   Future<void> signIn() async {

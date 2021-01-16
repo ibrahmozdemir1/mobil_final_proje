@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_final_proje/kurye_login_pages/kuye_ekrani.dart';
+import 'package:mobil_final_proje/siparis_list_yon/siparisislem.dart';
 import '../urun_islemleri/urunEkle.dart';
 
 class YoneticiEkran extends StatefulWidget {
@@ -11,10 +13,16 @@ class _YoneticiEkranState extends State<YoneticiEkran> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Yönetici ekranına hoşgeldiniz..."),
+          title: Text("Yönetici ekranına hoşgeldiniz"),
+          backgroundColor: Colors.pink,
         ),
         body: Container(
-          color: Colors.grey,
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/yoneticiarkaplan.jpeg'),
+                  fit: BoxFit.fill)),
           child: Form(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -22,33 +30,59 @@ class _YoneticiEkranState extends State<YoneticiEkran> {
                   Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
-                    child: RaisedButton(
-                        padding: EdgeInsets.fromLTRB(85, 10, 85, 10),
-                        onPressed: () => UrunEkle(),
-                        child: Text("Ürün İşlemleri"),
-                        textColor: Colors.blue,
-                        color: Colors.white),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(20),
-                    child: RaisedButton(
-                      padding: EdgeInsets.fromLTRB(55, 10, 55, 10),
-                      onPressed: () {},
-                      child: Text("Kurye İşlemleri"),
-                      textColor: Colors.blue,
-                      color: Colors.white,
+                    child: SizedBox(
+                      width: 210,
+                      height: 40,
+                      child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (_) => UrunEkle()));
+                          },
+                          child: Text("Ürün İşlemleri"),
+                          textColor: Colors.white,
+                          color: Colors.black),
                     ),
                   ),
+                  SizedBox(
+                    height: 8,
+                  ),
                   Container(
                     alignment: Alignment.center,
-                    padding: EdgeInsets.all(20),
-                    child: RaisedButton(
-                      padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
-                      onPressed: () {},
-                      child: Text("Siparişleri Görüntüle"),
-                      textColor: Colors.blue,
-                      color: Colors.white,
+                    padding: EdgeInsets.all(10),
+                    child: SizedBox(
+                      width: 210,
+                      height: 40,
+                      child: RaisedButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => KuryeEkrani()));
+                        },
+                        child: Text("Kurye İşlemleri"),
+                        textColor: Colors.white,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(10),
+                    child: SizedBox(
+                      width: 210,
+                      height: 40,
+                      child: RaisedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => SiparisIslem()));
+                        },
+                        child: Text("Siparişleri Görüntüle"),
+                        textColor: Colors.white,
+                        color: Colors.green,
+                      ),
                     ),
                   ),
                 ]),
