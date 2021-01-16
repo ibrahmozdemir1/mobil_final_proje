@@ -18,10 +18,10 @@ class _State extends State<LoginPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Marketim'),
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.blue,
         ),
         body: Container(
-          color: Colors.purple,
+          color: Colors.blue[50],
           child: Form(
               key: _formKey,
               child: ListView(
@@ -32,7 +32,7 @@ class _State extends State<LoginPage> {
                       child: Text(
                         'Marketim',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.blue[900],
                             fontWeight: FontWeight.w500,
                             fontSize: 30),
                       )),
