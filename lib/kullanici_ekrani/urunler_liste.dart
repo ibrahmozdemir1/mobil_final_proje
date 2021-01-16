@@ -39,7 +39,7 @@ class _UrunListeState extends State<UrunListe> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.blue[900],
         elevation: 0,
         title: Text("Hoşgeldiniz"),
         actions: <Widget>[
@@ -65,7 +65,7 @@ class _UrunListeState extends State<UrunListe> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/arkaplan.png'),
+                image: AssetImage('assets/images/arkaplan1.jpg'),
                 fit: BoxFit.fill)),
         child: StreamBuilder(
             stream: ref.snapshots(),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class SiparisIslem extends StatefulWidget {
+class SiparisGoruntule extends StatefulWidget {
   @override
-  _SiparisIslemState createState() => _SiparisIslemState();
+  _SiparisGoruntuleState createState() => _SiparisGoruntuleState();
 }
 
-class _SiparisIslemState extends State<SiparisIslem> {
+class _SiparisGoruntuleState extends State<SiparisGoruntule> {
   CollectionReference ref = FirebaseFirestore.instance.collection('Siparisler');
   TextEditingController urunAdi = TextEditingController();
   TextEditingController urunFiyat = TextEditingController();
@@ -25,7 +25,6 @@ class _SiparisIslemState extends State<SiparisIslem> {
       'siparisAdres': siparisAdres.text,
       'odemeTuru': odemeturu,
       'adSoyad': adSoyad.text,
-      'kuryeAd': kuryeAd.text,
     });
   }
 
@@ -33,16 +32,16 @@ class _SiparisIslemState extends State<SiparisIslem> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.purple,
         elevation: 0,
-        title: Text("Siparişleri Görüntüle"),
+        title: Text("Mevcut Siparişler"),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/arkaplan.png'),
+                image: AssetImage('assets/images/arkaplan_.jpg'),
                 fit: BoxFit.fill)),
         child: StreamBuilder(
             stream: ref.snapshots(),
@@ -55,22 +54,21 @@ class _SiparisIslemState extends State<SiparisIslem> {
                       var siparisler = snapshot.data.docs[index];
                       return ListTile(
                         leading: IconButton(
-                          icon: Icon(Icons.post_add),
-                          color: Colors.purple,
-                          iconSize: 40,
+                          icon: Icon(Icons.check),
+                          color: Colors.greenAccent[700],
+                          iconSize: 50,
                           onPressed: () {
                             urunAdi.text = siparisler['urunAdi'];
                             urunFiyat.text = siparisler['urunFiyat'];
                             siparisAdres.text = siparisler['siparisAdres'];
                             adSoyad.text = siparisler['adSoyad'];
                             odemeturu.text = siparisler['odemeTuru'];
-                            kuryeAd.text = siparisler['kuryeAd'];
                             showDialog(
                                 context: context,
                                 builder: (context) => Dialog(
                                       child: Container(
                                         width: 300,
-                                        color: Colors.deepPurple,
+                                        color: Colors.deepPurple[400],
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: ListView(
@@ -83,10 +81,10 @@ class _SiparisIslemState extends State<SiparisIslem> {
                                                 enabled: false,
                                                 controller: urunAdi,
                                                 style: TextStyle(
-                                                    color: Colors.black,
+                                                    color: Colors.white,
                                                     fontWeight:
                                                         FontWeight.bold),
-                                                cursorColor: Color(0xFF9b9b9b),
+                                                cursorColor: Color(0xFF000000),
                                                 decoration: InputDecoration(
                                                   border: OutlineInputBorder(
                                                     borderRadius:
@@ -104,7 +102,7 @@ class _SiparisIslemState extends State<SiparisIslem> {
                                                 enabled: false,
                                                 controller: urunFiyat,
                                                 style: TextStyle(
-                                                    color: Colors.black,
+                                                    color: Colors.white,
                                                     fontWeight:
                                                         FontWeight.bold),
                                                 cursorColor: Color(0xFF9b9b9b),
@@ -125,7 +123,7 @@ class _SiparisIslemState extends State<SiparisIslem> {
                                                 enabled: false,
                                                 controller: adSoyad,
                                                 style: TextStyle(
-                                                    color: Colors.black,
+                                                    color: Colors.white,
                                                     fontWeight:
                                                         FontWeight.bold),
                                                 cursorColor: Color(0xFF9b9b9b),
@@ -146,7 +144,7 @@ class _SiparisIslemState extends State<SiparisIslem> {
                                                 enabled: false,
                                                 controller: siparisAdres,
                                                 style: TextStyle(
-                                                    color: Colors.black,
+                                                    color: Colors.white,
                                                     fontWeight:
                                                         FontWeight.bold),
                                                 cursorColor: Color(0xFF9b9b9b),
@@ -167,7 +165,7 @@ class _SiparisIslemState extends State<SiparisIslem> {
                                                 enabled: false,
                                                 controller: odemeturu,
                                                 style: TextStyle(
-                                                    color: Colors.black,
+                                                    color: Colors.white,
                                                     fontWeight:
                                                         FontWeight.bold),
                                                 cursorColor: Color(0xFF9b9b9b),
@@ -178,33 +176,6 @@ class _SiparisIslemState extends State<SiparisIslem> {
                                                             Radius.circular(
                                                                 15)),
                                                     borderSide: BorderSide(),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 8,
-                                              ),
-                                              TextField(
-                                                controller: kuryeAd,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                                cursorColor: Color(0xFF9b9b9b),
-                                                decoration: InputDecoration(
-                                                  border: OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                15)),
-                                                    borderSide: BorderSide(),
-                                                  ),
-                                                  hintText: "Kurye Adı Giriniz",
-                                                  hintStyle: TextStyle(
-                                                    color: Color(0xFF9b9b9b),
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.normal,
                                                   ),
                                                 ),
                                               ),
@@ -213,8 +184,7 @@ class _SiparisIslemState extends State<SiparisIslem> {
                                               ),
                                               FlatButton(
                                                   color: Colors.green,
-                                                  child: Text(
-                                                      "Kurye Ekranına Gönder"),
+                                                  child: Text("Teslim Alındı"),
                                                   textColor: Colors.white,
                                                   onPressed: () {
                                                     siparisList();
@@ -228,28 +198,28 @@ class _SiparisIslemState extends State<SiparisIslem> {
                         ),
                         title: Text(
                           "Ürün Adı : " + siparisler['urunAdi'] + "",
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                         ),
                         subtitle: Form(
                           child: Column(
                             children: <Widget>[
                               Text(
                                 "Ürün Fiyatı : " + siparisler['urunFiyat'] + "",
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(color: Colors.white),
                               ),
                               Text(
                                 "Siparis Adresi : " +
                                     siparisler['siparisAdres'] +
                                     "",
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(color: Colors.white),
                               ),
                               Text(
                                 "Kullanıcı Adı : " + siparisler['adSoyad'] + "",
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(color: Colors.white),
                               ),
                               Text(
                                 "Ödeme Türü : " + siparisler['odemeTuru'] + "",
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(color: Colors.white),
                               ),
                             ],
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -261,7 +231,7 @@ class _SiparisIslemState extends State<SiparisIslem> {
               } else {
                 return Text(
                   "Olmuyor",
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white),
                 );
               }
             }),

@@ -15,10 +15,10 @@ class _KuryeGirisState extends State<KuryeGiris> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Lütfen Giriş Yapınız"),
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.purple,
       ),
       body: Container(
-        color: Colors.blue,
+        color: Colors.purple[50],
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -26,7 +26,7 @@ class _KuryeGirisState extends State<KuryeGiris> {
             children: <Widget>[
               Card(
                 elevation: 4.0,
-                color: Colors.white,
+                color: Colors.purple[100],
                 margin: EdgeInsets.only(left: 20, right: 20),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
@@ -47,11 +47,11 @@ class _KuryeGirisState extends State<KuryeGiris> {
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.email,
-                              color: Colors.grey,
+                              color: Colors.grey[600],
                             ),
                             hintText: "e-posta",
                             hintStyle: TextStyle(
-                              color: Color(0xFF9b9b9b),
+                              color: Color(0xFF757575),
                               fontSize: 15,
                               fontWeight: FontWeight.normal,
                             ),
@@ -67,12 +67,12 @@ class _KuryeGirisState extends State<KuryeGiris> {
                           obscureText: true,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
-                              Icons.email,
-                              color: Colors.grey,
+                              Icons.vpn_key,
+                              color: Colors.grey[600],
                             ),
                             hintText: "Şifre",
                             hintStyle: TextStyle(
-                              color: Color(0xFF9b9b9b),
+                              color: Color(0xFF757575),
                               fontSize: 15,
                               fontWeight: FontWeight.normal,
                             ),
@@ -99,7 +99,7 @@ class _KuryeGirisState extends State<KuryeGiris> {
                                 ),
                               ),
                             ),
-                            color: Colors.blue[400],
+                            color: Colors.purple[600],
                             shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(10)),
                           ),
@@ -123,8 +123,8 @@ class _KuryeGirisState extends State<KuryeGiris> {
         // Firebase ile iletişim noktası
         UserCredential user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => KuryeEkrani(user: user)));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => KuryeEkrani()));
       } catch (e) {
         print(e.toString());
       }

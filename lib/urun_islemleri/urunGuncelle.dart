@@ -57,10 +57,10 @@ class _UrunGuncelleState extends State<UrunGuncelle> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.green,
         elevation: 0,
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.green[100],
       body: StreamBuilder(
           stream: ref.snapshots(),
           builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {

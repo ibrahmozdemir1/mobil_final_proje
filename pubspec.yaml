@@ -61,6 +61,11 @@ flutter:
     - assets/images/arkaplan.png
     - assets/images/yoneticiarkaplan.jpeg
     - assets/images/arkaplan.jpeg
+    - assets/images/arkaplan1.jpg
+    - assets/images/arkaplan_.jpg
+    - assets/images/arkaplan2.jpg
+    - assets/images/arkaplan3.jpg
+    - assets/images/arkaplan4.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

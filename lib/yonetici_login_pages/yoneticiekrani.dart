@@ -14,7 +14,7 @@ class _YoneticiEkranState extends State<YoneticiEkran> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Yönetici ekranına hoşgeldiniz"),
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.green,
         ),
         body: Container(
           height: MediaQuery.of(context).size.height,
@@ -81,7 +81,7 @@ class _YoneticiEkranState extends State<YoneticiEkran> {
                         },
                         child: Text("Siparişleri Görüntüle"),
                         textColor: Colors.white,
-                        color: Colors.green,
+                        color: Colors.pink,
                       ),
                     ),
                   ),

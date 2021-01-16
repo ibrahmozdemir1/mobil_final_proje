@@ -15,10 +15,10 @@ class _YoneticiGirisState extends State<YoneticiGiris> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Lütfen Giriş Yapınız"),
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.green,
       ),
       body: Container(
-        color: Colors.lightBlue,
+        color: Colors.green[100],
         child: Form(
           key: _formKey,
           child: Column(
@@ -26,7 +26,7 @@ class _YoneticiGirisState extends State<YoneticiGiris> {
             children: <Widget>[
               Card(
                 elevation: 4.0,
-                color: Colors.white,
+                color: Colors.green[200],
                 margin: EdgeInsets.only(left: 20, right: 20),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
@@ -45,11 +45,11 @@ class _YoneticiGirisState extends State<YoneticiGiris> {
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.account_box,
-                              color: Colors.grey,
+                              color: Colors.grey[600],
                             ),
                             hintText: "e-posta",
                             hintStyle: TextStyle(
-                              color: Color(0xFF9b9b9b),
+                              color: Color(0xFF757575),
                               fontSize: 15,
                               fontWeight: FontWeight.normal,
                             ),
@@ -66,11 +66,11 @@ class _YoneticiGirisState extends State<YoneticiGiris> {
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.vpn_key,
-                              color: Colors.grey,
+                              color: Colors.grey[600],
                             ),
                             hintText: "Şifre",
                             hintStyle: TextStyle(
-                              color: Color(0xFF9b9b9b),
+                              color: Color(0xFF757575),
                               fontSize: 15,
                               fontWeight: FontWeight.normal,
                             ),
@@ -81,7 +81,7 @@ class _YoneticiGirisState extends State<YoneticiGiris> {
                           child: RaisedButton(
                             onPressed: () => signIn(),
                             textColor: Colors.white,
-                            color: Colors.blue,
+                            color: Colors.green[700],
                             child: Text('Giriş'),
                           ),
                         ),
